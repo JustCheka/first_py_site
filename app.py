@@ -1,8 +1,10 @@
 from flask import Flask
 
-COUNT = 0
+count = 0
 
 app = Flask(__name__)
+
+
 
 @app.route('/test')
 def test_function():
@@ -15,7 +17,14 @@ def hello_kek():
 
 @app.route('/counter')
 def counter():
-    COUNT += 1
-    return 'Количество вхождений = ' + str(COUNT)
+    return 'Количество вхождений = ' + plusCount()
+
+
+def plusCount():
+    global count
+    count += 1
+    print(count)
+    return str(count)
+
 # if __name__ == '__main__':
 #     app.run()
